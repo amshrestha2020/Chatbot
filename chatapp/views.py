@@ -2,21 +2,19 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 import openai
 from django.contrib.auth.models import User
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, response
 from django.utils import timezone
 from .models import Chat
 
 
 
-
-
-OPENAI_API_KEY = '{credentials_keys}'
+OPENAI_API_KEY = '{credentials keys}'
 openai.api_key = OPENAI_API_KEY
 
 
 def ask_openai(message):
     response = openai.ChatCompletion.create(
-        model = "gpt-4",
+        model = "gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are an helpful assistant."},
             {"role": "user", "content": message},
